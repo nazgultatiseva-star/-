@@ -1,0 +1,724 @@
+<!DOCTYPE html> 
+<html lang="kk"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Жоғалған атаулар | Атырау тарихи топонимдері</title> 
+<style> 
+/* ========================= НЕГІЗГІ БАПТАУЛАР ========================= */ 
+* { margin: 0; padding: 0; box-sizing: border-box; } 
+html { scroll-behavior: smooth; } 
+body { font-family: Arial, sans-serif; background: #f5f8f7; color: #18332f; } 
+
+/* ========================= HEADER ========================= */ 
+header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #dce8e5; } 
+.navbar { max-width: 1200px; margin: auto; padding: 15px 25px; display: flex; align-items: center; justify-content: space-between; } 
+.logo { font-size: 20px; font-weight: bold; color: #0c6b5c; } 
+.logo span { display: block; font-size: 11px; color: #6a817c; margin-top: 3px; } 
+nav { display: flex; gap: 20px; } 
+nav a { text-decoration: none; color: #274a44; font-size: 14px; font-weight: 600; } 
+nav a:hover { color: #0c8b76; } 
+
+/* ========================= HERO ========================= */ 
+.hero { min-height: 650px; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient( rgba(6,54,48,0.78), rgba(8,91,78,0.72) ), linear-gradient(135deg, #0c6b5c, #2c9684); } 
+.hero-content { max-width: 1200px; margin: auto; padding: 70px 25px; color: white; position: relative; z-index: 2; } 
+.badge { display: inline-block; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.5); border-radius: 30px; margin-bottom: 20px; font-size: 13px; } 
+.hero h1 { max-width: 850px; font-size: clamp(40px, 7vw, 78px); line-height: 0.98; margin-bottom: 25px; } 
+.hero p { max-width: 720px; font-size: 19px; line-height: 1.7; color: #e6f6f2; } 
+.hero-buttons { display: flex; gap: 15px; margin-top: 35px; flex-wrap: wrap; } 
+.btn { display: inline-block; padding: 14px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; } 
+.btn-primary { background: white; color: #0c6b5c; } 
+.btn-secondary { border: 1px solid rgba(255,255,255,0.6); color: white; background: transparent; } 
+
+/* ========================= SECTION ========================= */ 
+section { padding: 90px 20px; } 
+.container { max-width: 1200px; margin: auto; } 
+.section-title { text-align: center; margin-bottom: 50px; } 
+.section-title small { color: #0c8b76; font-weight: bold; text-transform: uppercase; } 
+.section-title h2 { font-size: 38px; margin-top: 10px; } 
+
+/* ========================= STATS ========================= */ 
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: -70px; position: relative; z-index: 5; } 
+.stat { background: white; padding: 30px; border-radius: 18px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); text-align: center; } 
+.stat strong { display: block; font-size: 35px; color: #0c806e; } 
+.stat span { color: #6d817d; } 
+
+/* ========================= SEARCH ========================= */ 
+.search-box { max-width: 650px; margin: 0 auto 35px; position: relative; } 
+.search-box input { width: 100%; padding: 17px 20px; border: 1px solid #d4e3df; border-radius: 14px; font-size: 16px; outline: none; } 
+.search-box input:focus { border-color: #0c8b76; } 
+
+/* ========================= CARDS ========================= */ 
+.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 25px; } 
+.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.07); transition: 0.3s; } 
+.card:hover { transform: translateY(-6px); } 
+.card-image { height: 180px; background: linear-gradient(135deg,#0d7767,#70b8aa); display: flex; align-items: center; justify-content: center; color: white; font-size: 55px; background-size: cover; background-position: center; } 
+.card-body { padding: 25px; } 
+.tag { display: inline-block; background: #e4f4f0; color: #087361; padding: 6px 10px; border-radius: 20px; font-size: 11px; margin-bottom: 12px; } 
+.card h3 { font-size: 23px; margin-bottom: 8px; } 
+.card p { color: #667873; line-height: 1.6; font-size: 14px; } 
+.more-btn { margin-top: 18px; background: #0c806e; color: white; border: none; padding: 11px 16px; border-radius: 9px; cursor: pointer; } 
+
+/* ========================= MAP ========================= */ 
+.map-section { background: #eaf4f1; } 
+.map { height: 550px; border-radius: 25px; background: radial-gradient(circle at 20% 30%, #79b5a8 2px, transparent 3px), radial-gradient(circle at 60% 50%, #79b5a8 2px, transparent 3px), linear-gradient(135deg,#dcece8,#b7d7cf); background-size: 60px 60px, 80px 80px, auto; position: relative; overflow: hidden; border: 8px solid white; box-shadow: 0 15px 40px rgba(0,0,0,0.1); } 
+.map-title { position: absolute; top: 20px; left: 25px; background: white; padding: 14px 18px; border-radius: 12px; font-weight: bold; } 
+.marker { position: absolute; width: 22px; height: 22px; border-radius: 50% 50% 50% 0; background: #d96b35; transform: rotate(-45deg); cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.25); } 
+.marker span { transform: rotate(45deg); display: block; font-size: 12px; color: white; text-align: center; margin-top: 4px; } 
+.marker:hover { transform: rotate(-45deg) scale(1.25); } 
+
+/* ========================= BEFORE / AFTER ========================= */ 
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; } 
+.compare-box { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.07); } 
+.compare-img { height: 300px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; font-size: 55px; color: white; } 
+.compare-content { padding: 25px; } 
+.compare-content h3 { font-size: 28px; } 
+
+/* ========================= AI ========================= */ 
+.ai-section { background: #102e2a; color: white; } 
+.ai-box { max-width: 850px; margin: auto; background: #173d37; border: 1px solid #2c5c54; border-radius: 25px; padding: 35px; } 
+.ai-header { display: flex; gap: 15px; align-items: center; margin-bottom: 25px; } 
+.ai-icon { width: 50px; height: 50px; background: #56b9a6; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 25px; } 
+.ai-input { display: flex; gap: 10px; } 
+.ai-input input { flex: 1; padding: 15px; border-radius: 10px; border: none; font-size: 15px; } 
+.ai-input button { padding: 15px 20px; background: #58b9a7; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; } 
+.ai-answer { margin-top: 20px; padding: 20px; background: #102e2a; border-radius: 12px; line-height: 1.7; display: none; } 
+
+/* ========================= QUIZ ========================= */ 
+.quiz { max-width: 750px; margin: auto; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.07); } 
+.quiz-question { font-size: 20px; font-weight: bold; margin-bottom: 20px; line-height: 1.5; } 
+.option { width: 100%; text-align: left; padding: 15px; margin: 8px 0; border: 1px solid #dbe7e4; border-radius: 10px; background: white; cursor: pointer; font-size: 15px; transition: 0.2s; } 
+.option:hover { background: #eef8f5; } 
+#quiz-result { margin-top: 20px; font-weight: bold; } 
+
+/* ========================= SOURCES ========================= */ 
+.sources { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; } 
+.source { background: white; padding: 25px; border-radius: 18px; border-left: 4px solid #0c806e; } 
+.source h3 { margin-bottom: 10px; } 
+.source p { color: #667873; line-height: 1.5; } 
+
+/* ========================= MODAL ========================= */ 
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 2000; align-items: center; justify-content: center; padding: 20px; } 
+.modal-content { max-width: 750px; width: 100%; max-height: 90vh; overflow-y: auto; background: white; border-radius: 22px; padding: 35px; position: relative; } 
+.close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; } 
+.modal-content h2 { color: #0c806e; margin-bottom: 20px; } 
+.modal-content p { line-height: 1.8; color: #536863; margin-bottom: 15px; } 
+.modal-img-container { display: flex; gap: 15px; margin: 15px 0; }
+.modal-img-container img { width: 50%; border-radius: 12px; height: 180px; object-fit: cover; }
+
+/* ========================= FOOTER ========================= */ 
+footer { background: #09221f; color: white; text-align: center; padding: 40px 20px; } 
+footer p { color: #a9c3bd; margin-top: 8px; } 
+
+/* ========================= RESPONSIVE ========================= */ 
+@media(max-width:900px) { nav { display: none; } .stats { grid-template-columns: repeat(2,1fr); } .cards, .sources { grid-template-columns: 1fr 1fr; } } 
+@media(max-width:600px) { .stats, .cards, .sources, .compare { grid-template-columns: 1fr; } section { padding: 60px 15px; } .hero { min-height: 600px; } .hero h1 { font-size: 43px; } .ai-input { flex-direction: column; } .modal-img-container { flex-direction: column; } .modal-img-container img { width: 100%; } } 
+</style> 
+</head> 
+<body> 
+
+<!-- ========================= HEADER ========================= --> 
+<header> 
+<div class="navbar"> 
+<div class="logo"> 
+🏛 ЖОҒАЛҒАН АТАУЛАР <span>Атыраудың тарихи топонимдері</span> 
+</div> 
+<nav> 
+<a href="#home">Басты бет</a> 
+<a href="#map">Карта</a> 
+<a href="#names">Атаулар</a> 
+<a href="#compare">Уақыт салыстыруы</a>
+<a href="#ai">ЖИ</a> 
+<a href="#quiz">Ойын</a> 
+</nav> 
+</div> 
+</header> 
+
+<!-- ========================= HERO ========================= --> 
+<section class="hero" id="home"> 
+<div class="hero-content"> 
+<div class="badge"> ЦИФРЛЫҚ ТАРИХИ ЗЕРТТЕУ ЖОБАСЫ </div> 
+<h1> ЖОҒАЛҒАН<br> АТАУЛАР </h1> 
+<p> Атырау өңірінің тарихи жер-су атауларын жинақтау, зерттеу және жас ұрпаққа цифрлық форматта ұсыну. </p> 
+<div class="hero-buttons"> 
+<a href="#map" class="btn btn-primary"> 🗺 Картаны зерттеу </a> 
+<a href="#names" class="btn btn-secondary"> 📜 Атауларды көру </a> 
+</div> 
+</div> 
+</section> 
+
+<!-- ========================= STATS ========================= --> 
+<div class="container"> 
+<div class="stats"> 
+<div class="stat"> 
+<strong>22</strong> <span>тарихи атау</span> 
+</div> 
+<div class="stat"> 
+<strong>9</strong> <span>өңірлік бағыт</span> 
+</div> 
+<div class="stat"> 
+<strong>6</strong> <span>топоним түрі</span> 
+</div> 
+<div class="stat"> 
+<strong>AI</strong> <span>цифрлық зерттеуші</span> 
+</div> 
+</div> 
+</div> 
+
+<!-- ========================= MAP ========================= --> 
+<section class="map-section" id="map"> 
+<div class="container"> 
+<div class="section-title"> 
+<small>ЗЕРТТЕУ КАРТАСЫ</small> 
+<h2>Атыраудың тарихи картасы</h2> 
+</div> 
+<div class="map"> 
+<div class="map-title"> 📍 Тарихи жер-су атаулары </div> 
+<div class="marker" style="left:30%;top:40%; background:#0284c7;" onclick="showPlace('Жайық')"> <span>1</span> </div> 
+<div class="marker" style="left:48%;top:30%; background:#d97706;" onclick="showPlace('Сарайшық')"> <span>2</span> </div> 
+<div class="marker" style="left:65%;top:55%; background:#d97706;" onclick="showPlace('Доссор')"> <span>3</span> </div> 
+<div class="marker" style="left:75%;top:35%; background:#6366f1;" onclick="showPlace('Мақат')"> <span>4</span> </div> 
+<div class="marker" style="left:42%;top:70%; background:#f59e0b;" onclick="showPlace('Құлсары')"> <span>5</span> </div> 
+<div class="marker" style="left:82%;top:68%; background:#e63946;" onclick="showPlace('Аралтөбе')"> <span>6</span> </div> 
+<div class="marker" style="left:38%;top:28%; background:#2a9d8f;" onclick="showPlace('Бақсай')"> <span>7</span> </div> 
+<div class="marker" style="left:58%;top:78%; background:#0284c7;" onclick="showPlace('Ембі')"> <span>8</span> </div> 
+<div class="marker" style="left:25%;top:20%; background:#8b5cf6;" onclick="showPlace('Индер')"> <span>9</span> </div>
+<div class="marker" style="left:80%;top:25%; background:#ec4899;" onclick="showPlace('Қаракөл')"> <span>10</span> </div>
+<div class="marker" style="left:15%;top:65%; background:#10b981;" onclick="showPlace('Қиғаш')"> <span>11</span> </div>
+<div class="marker" style="left:70%;top:20%; background:#e11d48;" onclick="showPlace('Қызылқоға')"> <span>12</span> </div>
+<div class="marker" style="left:65%;top:18%; background:#0284c7;" onclick="showPlace('Ойыл')"> <span>13</span> </div>
+<div class="marker" style="left:78%;top:32%; background:#14b8a6;" onclick="showPlace('Сағыз')"> <span>14</span> </div>
+<div class="marker" style="left:72%;top:15%; background:#84cc16;" onclick="showPlace('Тайсойған')"> <span>15</span> </div>
+</div> 
+</div> 
+</section> 
+
+<!-- ========================= NAMES ========================= --> 
+<section id="names"> 
+<div class="container"> 
+<div class="section-title"> 
+<small>ТОПОНИМДЕР</small> 
+<h2>Тарихи атаулар</h2> 
+</div> 
+<div class="search-box"> 
+<input type="text" id="search" placeholder="🔎 Атауды іздеу..." onkeyup="searchNames()"> 
+</div> 
+<div class="cards" id="cards"> 
+<div class="card" data-name="Тайсойған құмы полигон Қызылқоға Ойыл жайылым"> 
+<div class="card-image" style="background-image: url('тойсойған\ қазір.jpeg');"></div> 
+<div class="card-body"> 
+<span class="tag"> ДЮНОНИМ / ҚҰМДЫ АЛҚАП </span> 
+<h3>Тайсойған</h3> 
+<p> <b>Тарихи атауы:</b> Тайсойған құмы </p> 
+<p> Батыс Қазақстандағы ең ірі құмды алқап, әскери полигон тарихы бар шұрайлы мал жайылымы. </p> 
+<button class="more-btn" onclick="showPlace('Тайсойған')"> Толығырақ → </button> 
+</div> 
+</div>
+<div class="card" data-name="Сарайшық Күшік-Сарай Сар-Уч Сарай-Джук Кіші Сарай Махамбет хан пантеон Алтын Орда Қасым хан"> 
+<div class="card-image" style="background-image: url('сарайшық\ бүгін.webp');"></div> 
+<div class="card-body"> 
+<span class="tag"> ОЙКОНИМ / ТАРИХИ ҚАЛА ОРНЫ </span> 
+<h3>Сарайшық</h3> 
+<p> <b>Тарихи атауы:</b> Күшік-Сарай / Сар-Уч / Кіші Сарай </p> 
+<p> Алтын Орда, Ноғай Ордасы және Қазақ хандығының ірі орталығы, хандар пантеоны. </p> 
+<button class="more-btn" onclick="showPlace('Сарайшық')"> Толығырақ → </button> 
+</div> 
+</div> 
+<div class="card" data-name="Сағыз Сагиз теміржол станция өзен кент Қызылқоға"> 
+<div class="card-image" style="background-image: url('сағыз\ қазір.jpg');"></div> 
+<div class="card-body"> 
+<span class="tag"> ГИДРОНИМ / ОЙКОНИМ </span> 
+<h3>Сағыз</h3> 
+<p> <b>Тарихи атауы:</b> Сагиз </p> 
+<p> Мұғалжар бөктерінен басталатын өзен, тарихи теміржол станциясы және маңызды көлік торабы. </p> 
+<button class="more-btn" onclick="showPlace('Сағыз')"> Толығырақ → </button> 
+</div> 
+</div>
+<div class="card" data-name="Ойыл Уил Көкжар жәрмеңке өзен Тайсойған Қызылқоға"> 
+<div class="card-image" style="background-image: url('ойыл\ қазір.jpg');"></div> 
+<div class="card-body"> 
+<span class="tag"> ГИДРОНИМ (ӨЗЕН АТАУЫ) </span> 
+<h3>Ойыл (Көкжар)</h3> 
+<p> <b>Тарихи атауы:</b> Уил / Көкжар </p> 
+<p> Ұлы Жібек жолының тармағында орналасқан, Көкжар жәрмеңкесімен танымал Батыс Қазақстанның ең көне өзендерінің бірі. </p> 
+<button class="more-btn" onclick="showPlace('Ойыл')"> Толығырақ → </button> 
+</div> 
+</div> 
+<div class="card" data-name="Мақат Макат мұнай теміржол станция кент"> 
+<div class="card-image" style="background-image: url('макат\ казір.jpg');"></div> 
+<div class="card-body"> 
+<span class="tag"> ОЙКОНИМ / КЕНТ </span> 
+<h3>Мақат</h3> 
+<p> <b>Тарихи атауы:</b> Мақат </p> 
+<p> Мұнай өндірісі мен теміржол торабының тарихында ерекше орны бар, Мақат есімді тұлғаның атымен аталған өлке. </p> 
+<button class="more-btn" onclick="showPlace('Мақат')"> Толығырақ → </button> 
+</div> 
+</div> 
+<div class="card" data-name="Қызылқоға Миялы Ойыл Сағыз Тайсойған қоға мал аудан"> 
+<div class="card-image" style="background-image: url('қызылқоға\ қазір.jpg');"></div> 
+<div class="card-body"> 
+<span class="tag"> ОЙКОНИМ / АУДАН </span> 
+<h3>Қызылқоға</h3> 
+<p> <b>Тарихи атауы:</b> Қызылқоға </p> 
+<p> Ойыл мен Сағыз өзендері бойындағы шұрайлы, өнер мен мал шаруашылығы дамыған құтты мекен. </p> 
+<button class="more-btn" onclick="showPlace('Қызылқоға')"> Толығырақ → </button> 
+</div> 
+</div> 
+<div class="card" data-name="Құлсары Күлсары Жылыой Теңіз батыр мұнай қала"> 
+<div class="card-image" style="background-image: url('құлсары\ қазір.jpg');"></div> 
+<div class="card-body"> 
+<span class="tag"> ОЙКОНИМ / ҚАЛА </span> 
+<h3>Құлсары</h3> 
+<p> <b>Тарихи атауы:</b> Күлсары / Құлсары </p> 
+<p> Жылыой ауданының орталығы, Құлсары батыр есімімен аталған мұнайлы өңір орталығы. </p> 
+<button class="more-btn" onclick="showPlace('Құлсары')"> Толығырақ → </button> 
+</div> 
+</div> 
+</div> 
+</div> 
+</section> 
+
+<!-- ========================= BEFORE AFTER ========================= --> 
+<section id="compare" style="background:#edf5f3;"> 
+<div class="container"> 
+<div class="section-title"> 
+<small>УАҚЫТ САЛЫСТЫРУЫ</small> 
+<h2>Тайсойған өңірінің тарихи ескерткіштері мен бүгінгі көрінісі</h2> 
+</div> 
+<div class="compare"> 
+<div class="compare-box"> 
+<div class="compare-img" style="background-image: url('тайсойған\ бұрынғы.jpg');"></div> 
+<div class="compare-content"> 
+<span class="tag"> ТАРИХИ ЖАДІГЕРЛЕР ЖӘНЕ ЭКСПЕДИЦИЯ </span> 
+<h3>Тайсойғандағы көне қорымдар мен зерттеулер</h3> 
+<p> Құмды алқаптағы тарихи мазарлар мен полигон кезеңіндегі археологиялық ізденіс жұмыстары. </p> 
+</div> 
+</div> 
+<div class="compare-box"> 
+<div class="compare-img" style="background-image: url('тойсойған\ қазір.jpeg');"></div> 
+<div class="compare-content"> 
+<span class="tag"> ҚАЗІРГІ НЕЛІК ЖӘНЕ ЕЛДІ МЕКЕНДЕР </span> 
+<h3>Қайтарылған жерлер мен қазіргі Тайсойған</h3> 
+<p> Ел игілігіне қайтарылған, мал шаруашылығы қарқынды дамып келе жатқан елді мекен көрінісі. </p> 
+</div> 
+</div> 
+</div> 
+</div> 
+</section> 
+
+<!-- ========================= AI ========================= --> 
+<section class="ai-section" id="ai"> 
+<div class="container"> 
+<div class="section-title"> 
+<small style="color:#74d5c2;"> ЖАСАНДЫ ИНТЕЛЛЕКТ </small> 
+<h2>🤖 ЖИ Топоним зерттеуші</h2> 
+</div> 
+<div class="ai-box"> 
+<div class="ai-header"> 
+<div class="ai-icon"> 🤖 </div> 
+<div> 
+<h3>Тарихи атау туралы сұраңыз</h3> 
+<p> Зерттеу базасындағы мәліметтер негізінде ақпаратты түсіндіреді. </p> 
+</div> 
+</div> 
+<div class="ai-input"> 
+<input id="aiQuestion" placeholder="Мысалы: Тайсойған, Сарайшық, Сағыз немесе Ойыл туралы айтып беріңіз"> 
+<button onclick="askAI()"> Сұрау </button> 
+</div> 
+<div class="ai-answer" id="aiAnswer"></div> 
+</div> 
+</div> 
+</section> 
+
+<!-- ========================= QUIZ (5 СҰРАҚ) ========================= --> 
+<section id="quiz"> 
+  <div class="container"> 
+    <div class="section-title"> 
+      <small>ИНТЕРАКТИВТІ ОЙЫН</small> 
+      <h2>🧩 Біліміңді тексер</h2> 
+    </div> 
+    
+    <div class="quiz" id="quiz-container"> 
+      <div id="quiz-progress" style="margin-bottom: 15px; font-weight: bold; color: #0c806e;"> 
+        Сұрақ: <span id="current-question">1</span> / 5 
+      </div> 
+      
+      <div class="quiz-question" id="question-text">
+        1949 жылы КСРО Қорғаныс министрлігіне әскери полигон ретінде жалға беріліп, 2015 жылы елге қайтарылған құмды алқап қайсысы?[cite: 44]
+      </div> 
+      
+      <div id="options-container">
+        <!-- Жауаптар скрипт арқылы жүктеледі -->
+      </div> 
+      
+      <div id="quiz-result" style="margin-top: 20px; font-weight: bold;"></div> 
+      
+      <button id="next-btn" onclick="nextQuestion()" style="display: none; margin-top: 20px; background: #0c806e; color: white; border: none; padding: 12px 20px; border-radius: 10px; cursor: pointer; font-weight: bold;">
+        Келесі сұрақ →
+      </button>
+    </div> 
+  </div> 
+</section>
+
+<!-- ========================= SOURCES ========================= --> 
+<section style="background:#edf5f3;"> 
+<div class="container"> 
+<div class="section-title"> 
+<small>ҒЫЛЫМИ НЕГІЗ</small> 
+<h2>📚 Дереккөздер</h2> 
+</div> 
+<div class="sources"> 
+<div class="source"> 
+<h3>📖 Тарихи жазбалар & Энциклопедиялар</h3> 
+<p> Қазақстан Ұлттық Энциклопедиясы («Тайсойған құмы» бөлімі), Ибн Баттута «Саяхатнама»[cite: 41, 44]. </p> 
+</div> 
+<div class="source"> 
+<h3>📜 Өлкетану & Археология</h3> 
+<p> Қызылқоға ауданының географиялық анықтамалығы, Атырау облыстық тарихи-өлкетану музейінің мұрағаттық деректері[cite: 44]. </p> 
+</div> 
+<div class="source"> 
+<h3>🌐 Цифрлық деректер</h3> 
+<p> Атырау облысының топонимикалық сөздігі және ресми геопортал мәліметтері[cite: 44]. </p> 
+</div> 
+</div> 
+</div> 
+</section> 
+
+<!-- ========================= MODAL ========================= --> 
+<div class="modal" id="modal"> 
+<div class="modal-content"> 
+<div class="close" onclick="closeModal()"> × </div> 
+<div id="modalText"></div> 
+</div> 
+</div> 
+
+<!-- ========================= FOOTER ========================= --> 
+<footer> 
+<h3>ЖОҒАЛҒАН АТАУЛАР</h3> 
+<p> Атырау өңірінің тарихи топонимдерін цифрлық түрде сақтау жобасы </p> 
+<p style="margin-top:20px;"> © 2026 | Зерттеу жобасы </p> 
+</footer> 
+
+<script> 
+/* ========================= ТАРИХИ ДЕРЕКТЕР ========================= */ 
+const places = { 
+"Тайсойған": { 
+title: "Тайсойған", 
+oldName: "Тайсойған құмы", 
+type: "Дюноним / Аймақ, құмды алқап", 
+text: ` 
+<p><b>Қазіргі атауы:</b> Тайсойған[cite: 44]</p> 
+<p><b>Тарихи атауы:</b> Тайсойған құмы[cite: 44]</p> 
+<p><b>Орналасқан жері:</b> Атырау облысы, Қызылқоға ауданы[cite: 44]</p> 
+<p><b>Координаттары:</b> 48°34′05″ с. е. 53°26′51″ ш. б.[cite: 44]</p> 
+
+<div class="modal-img-container">
+    <img src="тайсойған бұрынғы.jpg" alt="Тайсойғандағы зерттеулер">
+    <img src="тойсойған қазір.jpeg" alt="Тайсойған ауылы қазір">
+</div>
+
+<p><b>Тарихы:</b><br>
+Тайсойған — Батыс Қазақстан өңіріндегі ең ірі құмды алқаптардың бірі[cite: 44]. Ойыл өзенінің төменгі ағысы мен Каспий маңы ойпаты шегінде орналасқан[cite: 44]. Тарихи тұрғыдан бұл аймақ ежелден мал шаруашылығына өте қолайлы, шөбі шүйгін, тұщы сулы құдықтары мол құтты мекен саналған[cite: 44].<br>
+Кеңес өкіметі тұсында, 1949 жылы Тайсойған құмының басым бөлігі (300 мың гектардан астам жер) КСРО Қорғаныс министрлігінің әскери полигоны ретінде жалға берілді[cite: 44]. Бұл жерде ондаған жылдар бойы әскери сынақтар жүргізіліп, өңірдің экологиясы мен жергілікті халықтың тұрмысына үлкен әсер етті[cite: 44]. 2015 жылы жүргізілген келіссөздер нәтижесінде Тайсойған полигонының жерлері Қазақстан Республикасының меншігіне толық қайтарылды[cite: 44].</p> 
+
+<p><b>Атаудың шығу төркіні:</b><br>
+Топонимнің пайда болуына байланысты халық арасында бірнеше нұсқа бар[cite: 44]. Негізгі топонимикалық уәждеме бойынша, ертеде ел басына күн туған заманда немесе үлкен ас/жиын берілгенде осы құмды алқапта құрбандыққа немесе қонақасыға «тай сойылған» оқиғасына байланысты «Тайсойған» деп аталған[cite: 44].</p> 
+
+<p><b>Аңыз мен деректер:</b><br>
+• <i>Шұрайлы құм аңызы:</i> Тұрғындар арасында Тайсойған құмының астында мол тұщы су қоры мен табиғи жайылымдар бар екені айтылады[cite: 44]. Құмды аймақ болғанына қарамастан, жер бетіне жақын орналасқан тұщы сулардың арқасында мұнда қалың шабындықтар мен ағаш-бұталар өседі[cite: 44].<br>
+• <i>Полигон жерлерін қайтару:</i> 2015 жылы Ресей Федерациясымен арадағы келісім бойынша 90 мың гектардан астам Тайсойған полигонының жері ауыл шаруашылығы айналымына қайтарылып, Қызылқоға ауданының шаруаларына жайылым ретінде берілді[cite: 44].</p>
+
+<p><b>Қазіргі жағдайы:</b><br>
+Бүгінгі таңда Тайсойған — Қызылқоға ауданындағы мал шаруашылығын (төрт түлік мал өсіруді) дамытудың басты базасы[cite: 44]. Полигон жабылғаннан кейін аймақта экологиялық оңалту және ауыл шаруашылығы жерлерін тиімді пайдалану жұмыстары қолға алынды[cite: 44].</p>
+` 
+},
+"Сарайшық": { 
+title: "Сарайшық", 
+oldName: "Күшік-Сарай / Сар-Уч / Сарай-Джук / Кіші Сарай", 
+type: "Ойконим / Тарихи қала орны", 
+text: ` 
+<p><b>Қазіргі атауы:</b> Сарайшық[cite: 41]</p> 
+<p><b>Тарихи атауы:</b> Күшік-Сарай / Сар-Уч / Кіші Сарай[cite: 41]</p> 
+<div class="modal-img-container">
+    <img src="сарайшық бұрынғы фото.jpg" alt="Сарайшық бұрын">
+    <img src="сарайшық бүгін.webp" alt="Сарайшық қазір">
+</div>
+<p>Сарайшық — XIII–XVI ғасырлардағы ірі тарихи шаһар[cite: 41].</p>
+` 
+},
+"Сағыз": { 
+title: "Сағыз", 
+oldName: "Сагиз", 
+type: "Гидроним / Ойконим", 
+text: ` 
+<p><b>Қазіргі атауы:</b> Сағыз</p> 
+<div class="modal-img-container">
+    <img src="Сағыз бұрын.webp" alt="Сағыз бұрын">
+    <img src="сағыз қазір.jpg" alt="Сағыз қазір">
+</div>
+<p>Мұғалжар тауларынан бастау алатын өзен[cite: 41].</p>
+` 
+},
+"Ойыл": { 
+title: "Ойыл (Көкжар)", 
+oldName: "Уил / Көкжар", 
+type: "Гидроним (өзен атауы)", 
+text: ` 
+<p><b>Қазіргі атауы:</b> Ойыл</p> 
+<div class="modal-img-container">
+    <img src="Ойыл Көкжар жірменкесі.jpg" alt="Көкжар жәрмеңкесі">
+    <img src="ойыл қазір.jpg" alt="Ойыл өзені">
+</div>
+<p>Ойыл — Батыс Қазақстанның ең көне өзендерінің бірі.</p> 
+` 
+},
+"Мақат": { 
+title: "Мақат", 
+oldName: "Мақат", 
+type: "Ойконим / Аудан орталығы", 
+text: `<p><b>Қазіргі атауы:</b> Мақат</p><p>Мақат — мұнайлы кент.</p>` 
+},
+"Қызылқоға": { 
+title: "Қызылқоға", 
+oldName: "Қызылқоға", 
+type: "Ойконим / Аудан атауы", 
+text: `<p><b>Қазіргі атауы:</b> Қызылқоға</p><p>Өнер мен мал шаруашылығы дамыған өлке[cite: 41].</p>` 
+},
+"Құлсары": { 
+title: "Құлсары", 
+oldName: "Күлсары / Құлсары", 
+type: "Ойконим / Қала", 
+text: `<p><b>Қазіргі атауы:</b> Құлсары</p><p>Жылыой ауданының орталығы[cite: 41].</p>` 
+},
+"Қиғаш": { 
+title: "Қиғаш", 
+oldName: "Кигач", 
+type: "Гидроним", 
+text: `<p><b>Қазіргі атауы:</b> Қиғаш</p><p>Еділ өзенінің суы мол тармағы[cite: 41].</p>` 
+},
+"Қаракөл": { 
+title: "Қаракөл", 
+oldName: "Қаракөл", 
+type: "Гидроним", 
+text: `<p><b>Қазіргі атауы:</b> Қаракөл</p><p>Ойыл өзені сағасындағы тұщы көл.</p>` 
+},
+"Индер": { 
+title: "Индер", 
+oldName: "Дендер / Тұздыкөл", 
+type: "Ороним / Гидроним", 
+text: `<p><b>Қазіргі атауы:</b> Индер</p><p>Бірегей тұзды көл[cite: 41].</p>` 
+},
+"Жайық": { 
+title: "Жайық", 
+oldName: "Яик, Даикс, Урал", 
+type: "Гидроним", 
+text: `<p><b>Қазіргі атауы:</b> Жайық</p><p>Елдің негізгі су артериясы.</p>` 
+},
+"Ембі": { 
+title: "Ембі", 
+oldName: "Эмба / Ғем", 
+type: "Гидроним", 
+text: `<p><b>Қазіргі атауы:</b> Ембі</p><p>Тарихи өзен[cite: 41].</p>` 
+},
+"Доссор": { 
+title: "Доссор", 
+oldName: "Досғор / Доссор", 
+type: "Ойконим", 
+text: `<p><b>Қазіргі атауы:</b> Доссор</p><p>Мұнай өндірісінің қара шаңырағы.</p>` 
+},
+"Бақсай": { 
+title: "Бақсай", 
+oldName: "Баксай", 
+type: "Гидроним / Ойконим", 
+text: `<p><b>Қазіргі атауы:</b> Бақсай</p><p>Жайықтың оң жағалауындағы тарихи өзен[cite: 41].</p>` 
+},
+"Аралтөбе": { 
+title: "Аралтөбе", 
+oldName: "Аралтөбе", 
+type: "Ойконим", 
+text: `<p><b>Қазіргі атауы:</b> Аралтөбе</p><p>Сармат дәуірінің ескерткіші[cite: 41].</p>` 
+} 
+}; 
+
+/* ========================= МОДАЛЬДЫ АШУ ========================= */ 
+function showPlace(name) { 
+const place = places[name]; 
+if (!place) return; 
+document.getElementById("modalText").innerHTML = ` 
+<h2>${place.title}</h2> 
+<p> <b>Тарихи атауы:</b> ${place.oldName} </p> 
+<p> <b>Топоним түрі:</b> ${place.type} </p> 
+${place.text} 
+<hr style="margin:25px 0;"> 
+<p> 📱 <b>QR код арқылы бөлісуге дайын</b> </p> 
+`; 
+document.getElementById("modal").style.display = "flex"; 
+} 
+
+/* ========================= МОДАЛЬДЫ ЖАБУ ========================= */ 
+function closeModal() { 
+document.getElementById("modal").style.display = "none"; 
+} 
+
+/* ========================= ІЗДЕУ ========================= */ 
+function searchNames() { 
+const search = document.getElementById("search").value.toLowerCase(); 
+const cards = document.querySelectorAll(".card"); 
+cards.forEach(card => { 
+const name = card.dataset.name.toLowerCase(); 
+if (name.includes(search)) { 
+card.style.display = "block"; 
+} else { 
+card.style.display = "none"; 
+} 
+}); 
+} 
+
+/* ========================= AI ПРОТОТИП ========================= */ 
+function askAI() { 
+const question = document.getElementById("aiQuestion").value; 
+const answer = document.getElementById("aiAnswer"); 
+if (!question.trim()) { 
+answer.style.display = "block"; 
+answer.innerHTML = "Сұрағыңызды енгізіңіз."; 
+return; 
+} 
+answer.style.display = "block"; 
+const q = question.toLowerCase();
+if (q.includes("тайсойған") || q.includes("тайсойган")) {
+answer.innerHTML = ` 
+<b>🤖 ЖИ зерттеуші:</b><br><br> 
+Тайсойған — Қызылқоға ауданындағы ірі құмды алқап[cite: 44]. 1949 жылы КСРО әскери полигоны ретінде жалға беріліп[cite: 44], 2015 жылы ел игілігіне қайтарылған[cite: 44]. Атауы «тай сойылған» тарихи/аңыздық оқиғасына байланысты қойылған[cite: 44].
+`; 
+} else if (q.includes("сарайшық") || q.includes("сарайчик") || q.includes("кіші сарай")) { 
+answer.innerHTML = ` 
+<b>🤖 ЖИ зерттеуші:</b><br><br> 
+Сарайшық (Кіші Сарай) — XIII–XVI ғасырлардағы Алтын Орда, Ноғай Ордасы мен Қазақ хандығының ірі орталығы[cite: 41]. Бұл жерде 7 хан жерленген[cite: 41].
+`; 
+} else if (q.includes("сағыз") || q.includes("сагиз")) { 
+answer.innerHTML = ` 
+<b>🤖 ЖИ зерттеуші:</b><br><br> 
+Сағыз — Мұғалжар тауларынан басталатын өзен[cite: 41], тарихи теміржол бекеті[cite: 41].
+`; 
+} else if (q.includes("ойыл") || q.includes("көкжар") || q.includes("уил")) { 
+answer.innerHTML = ` 
+<b>🤖 ЖИ зерттеуші:</b><br><br> 
+Ойыл — Батыс Қазақстанның көне өзені[cite: 41], Көкжар жәрмеңкесі өткен жер[cite: 41].
+`; 
+} else { 
+answer.innerHTML = ` 
+<b>🤖 ЖИ зерттеуші:</b><br><br> 
+Бұл сұрақ бойынша деректер базасы іздестірілуде.
+`; 
+} 
+} 
+
+/* ========================= QUIZ (5 СҰРАҚ ЛОГИКАСЫ) ========================= */ 
+const quizData = [
+  {
+    question: "1949 жылы КСРО Қорғаныс министрлігіне әскери полигон ретінде жалға беріліп, 2015 жылы елге қайтарылған құмды алқап қайсысы?[cite: 44]",
+    options: ["A) Тайсойған құмы", "B) Нарын құмы", "C) Рын құмы", "D) Қарақұм"],
+    correct: 0,
+    explanation: "Тайсойған полигонының жерлері 2015 жылы елге қайтарылып, Қызылқоға шаруаларына жайылым ретінде берілді[cite: 44]."
+  },
+  {
+    question: "Алтын Орда, Ноғай Ордасы және Қазақ хандығының ірі орталығы болған, 7 хан жерленген тарихи шаһар?[cite: 41]",
+    options: ["A) Тараз", "B) Сарайшық", "C) Сығанақ", "D) Отырар"],
+    correct: 1,
+    explanation: "Сарайшық (Күшік-Сарай) — Атырау өңіріндегі ең ірі ортағасырлық тарихи қала және хандар пантеоны[cite: 41]."
+  },
+  {
+    question: "Мұғалжар бөктерінен басталып, Атырау облысының Қызылқоға ауданы арқылы өтетін тарихи өзен мен станция атауы?[cite: 41]",
+    options: ["A) Ембі", "B) Жайық", "C) Сағыз", "D) Қиғаш"],
+    correct: 2,
+    explanation: "Сағыз — Мұғалжар тауларынан бастау алатын өзен әрі тарихи теміржол бекеті[cite: 41]."
+  },
+  {
+    question: "Ұлы Жібек жолының тармағында орналасқан, бұрын өзінің атақты «Көкжар жәрмеңкесімен» танымал болған өзен атауы?[cite: 41]",
+    options: ["A) Ойыл", "B) Жайық", "C) Бақсай", "D) Жем"],
+    correct: 0,
+    explanation: "Ойыл бойындағы Көкжар жәрмеңкесі Батыс Қазақстанның ірі сауда орталықтарының бірі болған[cite: 41]."
+  },
+  {
+    question: "Жылыой ауданының орталығы саналатын, мұнайлы өңірдегі батыр есімімен аталған қала?[cite: 41]",
+    options: ["A) Доссор", "B) Мақат", "C) Құлсары", "D) Индер"],
+    correct: 2,
+    explanation: "Құлсары қаласы өңірдегі белгілі тұлға — Құлсары батырдың құрметіне аталған[cite: 41]."
+  }
+];
+
+let currentQuizIndex = 0;
+let score = 0;
+
+function loadQuiz() {
+  const current = quizData[currentQuizIndex];
+  document.getElementById("current-question").innerText = currentQuizIndex + 1;
+  document.getElementById("question-text").innerText = current.question;
+  
+  const optionsContainer = document.getElementById("options-container");
+  optionsContainer.innerHTML = "";
+  
+  current.options.forEach((optionText, index) => {
+    const button = document.createElement("button");
+    button.className = "option";
+    button.innerText = optionText;
+    button.onclick = () => selectAnswer(index);
+    optionsContainer.appendChild(button);
+  });
+  
+  document.getElementById("quiz-result").innerText = "";
+  document.getElementById("next-btn").style.display = "none";
+}
+
+function selectAnswer(selectedIndex) {
+  const current = quizData[currentQuizIndex];
+  const options = document.querySelectorAll("#options-container .option");
+  const result = document.getElementById("quiz-result");
+  
+  options.forEach(btn => btn.disabled = true);
+  
+  if (selectedIndex === current.correct) {
+    options[selectedIndex].style.background = "#d1fae5";
+    options[selectedIndex].style.borderColor = "#10b981";
+    result.style.color = "#047857";
+    result.innerHTML = `✅ Дұрыс жауап! ${current.explanation}`;
+    score += 10;
+  } else {
+    options[selectedIndex].style.background = "#fee2e2";
+    options[selectedIndex].style.borderColor = "#ef4444";
+    options[current.correct].style.background = "#d1fae5";
+    result.style.color = "#b91c1c";
+    result.innerHTML = `❌ Қате. Дұрысы: ${current.options[current.correct]}. <br><small>${current.explanation}</small>`;
+  }
+  
+  document.getElementById("next-btn").style.display = "inline-block";
+}
+
+function nextQuestion() {
+  currentQuizIndex++;
+  if (currentQuizIndex < quizData.length) {
+    loadQuiz();
+  } else {
+    showFinalResult();
+  }
+}
+
+function showFinalResult() {
+  const container = document.getElementById("quiz-container");
+  container.innerHTML = `
+    <div style="text-align: center; padding: 20px;">
+      <h3 style="font-size: 26px; color: #0c806e; margin-bottom: 15px;">🎉 Викторина аяқталды!</h3>
+      <p style="font-size: 18px; margin-bottom: 10px;">Сіз <b>${quizData.length}</b> сұрақтың <b>${score / 10}</b> сұрағына дұрыс жауап бердіңіз.</p>
+      <p style="font-size: 20px; font-weight: bold; color: #18332f;">Жинаған ұпайыңыз: ${score} / ${quizData.length * 10}</p>
+      <button onclick="location.reload()" style="margin-top: 25px; background: #0c806e; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold;">
+        🔄 Қайтадан өту
+      </button>
+    </div>
+  `;
+}
+
+// Бет жүктелгенде квизді іске қосу
+document.addEventListener("DOMContentLoaded", loadQuiz);
+</script> 
+</body> 
+</html>
